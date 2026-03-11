@@ -1,6 +1,6 @@
 library(readr)
 library(AER)
-df <- read_csv("/Users/gabriellamessenger/Desktop/Math386-2/Math386/Psets/ang_ev_1980.csv")
+df <- read_csv("ang_ev_1980.csv")
 
 # 1 - For the each of the two outcomes, explain which regression you ran in your
 # previous problem set can be interpreted as LATE. Run these regressions
@@ -13,17 +13,16 @@ df <- read_csv("/Users/gabriellamessenger/Desktop/Math386-2/Math386/Psets/ang_ev
 # be argued to satisfy both exogeneity and monotonicity, so the TSLS regression 
 # using same-sex as the IV will equal the LATE
 
+
+# mom_worked regression
 iv_mom_worked_model <- ivreg(mom_worked ~ 
                                morekids | samesex, data=df)
-
-iv_mom_weeks_worked_model <- ivreg(mom_weeks_worked ~ 
-                                     morekids | samesex, data=df)
-
-
-# mom_worked
 summary(iv_mom_worked_model)
 
-# mom_weeks_worked
+
+# mom_weeks_worked regression
+iv_mom_weeks_worked_model <- ivreg(mom_weeks_worked ~ 
+                                     morekids | samesex, data=df)
 summary(iv_mom_weeks_worked_model)
 
 
